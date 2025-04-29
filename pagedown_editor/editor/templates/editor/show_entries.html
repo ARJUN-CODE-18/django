@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Entries</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #1f1f54, #4b0f3d);
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .glow-card {
+            background: rgba(75, 24, 79, 0.5);
+            backdrop-filter: blur(20px);
+            border-radius: 1rem;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+            padding: 1.75rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .glow-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 35px rgba(255, 255, 255, 0.12);
+        }
+
+        .glow-title {
+            color: #e0aaff;
+            text-shadow: 0 0 10px #e0aaff, 0 0 20px #e0aaff;
+        }
+
+        .glow-heading {
+            color: #72f9ff;
+            text-shadow: 0 0 10px #72f9ff;
+        }
+    </style>
+</head>
+<body class="text-white px-6 py-12 min-h-screen">
+    <div class="w-full max-w-5xl mx-auto">
+        <h1 class="text-5xl font-bold text-center glow-heading mb-14 tracking-wide">Entries</h1>
+
+        {% for entry in entries %}
+            <div class="glow-card mb-10">
+                <h2 class="text-3xl font-bold glow-title mb-2">{{ entry.title }}</h2>
+                <p class="text-white/90 tracking-wide leading-relaxed">{{ entry.content }}</p>
+            </div>
+        {% empty %}
+            <p class="text-center text-lg text-white/70">No entries found.</p>
+        {% endfor %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Entry</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #1f1f54, #4b0f3d);
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .aurora-card {
+            background: rgba(75, 24, 79, 0.5);
+            border-radius: 1rem;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .aurora-heading {
+            color: #72f9ff;
+            text-shadow: 0 0 10px #72f9ff;
+        }
+
+        .aurora-button {
+            background: linear-gradient(90deg, #ff00cc, #3333ff);
+            box-shadow: 0 0 15px #ff00cc, 0 0 30px #3333ff;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .aurora-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px #ff00cc, 0 0 40px #3333ff;
+        }
+
+        input, textarea, select {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid #e0aaff;
+            border-radius: 0.5rem;
+            padding: 0.5rem;
+            width: 100%;
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #e0aaff;
+            box-shadow: 0 0 10px #e0aaff;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center text-white px-6">
+    <div class="aurora-card w-full max-w-2xl p-10 rounded-2xl">
+        <h1 class="text-4xl font-bold text-center aurora-heading mb-10 animate-pulse">📝 Create a New Entry</h1>
+        <form method="post" class="space-y-6">
+            {% csrf_token %}
+            <div class="space-y-4 text-lg">
+                {{ form.as_p }}
+            </div>
+            <button 
+                type="submit" 
+                class="aurora-button text-white w-full py-3 px-6 rounded-xl font-bold"
+            >
+                🚀 Submit
+            </button>
+        </form>
+    </div>
+</body>
+</html>
